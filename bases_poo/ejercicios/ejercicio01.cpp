@@ -1,42 +1,61 @@
-// POO en C++
-// Conceptos b�sicos: Clase, Objeto, Abstracci�n, Encapsulaci�n
+/*
+Crea una clase Fraccion con metodos para sumar, restar, multiplicar y dividir fracciones.
+*/
 #include<iostream>
-#include<stdlib.h>
 
 using namespace std;
 
-class Persona{
+class Fraccion{
 	// Atributos
 	private:
-		int edad;
-		string nombre;
-	// M�todos
+		int a;
+		int b;
+		int c;
+		int d;
+	// Metodos
 	public:
-        Persona(int, string);   // Constructor
-		void leer();
-		void correr();
+		Fraccion(int, int, int, int);
+		float sumar();
+		float restar();
+		float multiplicar();
+		float dividir();
 };
 
-// Inicializar constructor
-Persona::Persona(int _edad, string _nombre){
-	edad = _edad;
-	nombre = _nombre;
+// Iniciar constructor
+Fraccion::Fraccion(int _a, int _b, int _c, int _d){
+	a = _a;
+	b = _b;
+	c = _c;
+	d = _d;
 }
 
-// M�todo leer
-void Persona::leer(){
-	cout << "Soy " << nombre << " y estoy leyendo" << endl;
+// Metodo sumar
+float Fraccion::sumar(){
+	return (float)(a*d + b*c)/(b*d);
 }
 
-// M�todo correr
-void Persona::correr(){
-	cout << "Soy " << nombre << " y estoy corriendo" << endl;
+// Metodo restar
+float Fraccion::restar(){
+	return (float)(a*d - b*c)/(b*d);
+}
+
+// Metodo multiplicar
+float Fraccion::multiplicar(){
+	return (float)(a*c)/(b*d);
+}
+
+// Metodo dividir
+float Fraccion::dividir(){
+	return (float)(a*d)/(b*c);
 }
 
 int main(){
-	Persona p1 = Persona(22, "Isabel");
-	Persona p2(19, "Mar�a");
-	p1.leer();
-	p2.leer();
-    return 0;
+	cout.precision(3);
+	Fraccion f(4, 2, 9, 3);
+	cout<<"Suma: "<<f.sumar()<<endl;
+	cout<<"Resta: "<<f.restar()<<endl;
+	cout<<"Multiplicacion: "<<f.multiplicar()<<endl;
+	cout<<"Division: "<<f.dividir()<<endl;
+	return 0;
 }
+
